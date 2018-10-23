@@ -11,7 +11,11 @@ Directories have .gitignore for now, modify when inputting files so they are tra
 
 TODO:
 Add goals
+
 Add inputs->outputs
+
 Baseline
+
 Add our model
+
 Add Experiments
