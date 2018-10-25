@@ -1,0 +1,113 @@
+board = {
+assassin: ["star"]
+blue: ["fence", "rose", "bridge", "antarctica", "sub", "mercury", "superhero", "embassy", "check"]
+neutral: ["europe", "cloak", "maple", "suit", "death", "himalayas", "piano"]
+red: ["spot", "slug", "king", "mexico", "missile", "australia", "seal", "horse"]
+}
+
+
+our clue:
+structures (2)
+
+
+baseline:
+public_works
+alternate: airport, underpass
+
+
+good^
+
+
+board = {
+	{"blue":["tail","star","bow","bolt","check","lemon","sock","pilot","poison"],"red":["paper","grass","shark","tap","game","kid","port","rome"],"assassin":["pool"],"neutral":["chick","turkey","air","jupiter","net","field","leprechaun"]}
+}
+
+our clue:
+shooting
+
+baseline:
+Major
+
+bad^
+
+
+board: {"blue":["round","olive","genius","paste","death","conductor","server","queen"],"red":["star","diamond","battery","france","light","buffalo","sink","park","plate"],"assassin":["fan"],"neutral":["plane","dance","tail","phoenix","arm","dragon","needle"]}
+
+
+our clue: sphere
+
+baseline:
+protocol
+
+eh^
+
+{"blue":["triangle","wake","hand","bed","tap","ambulance","new york","dragon","row"],"red":["embassy","kid","shop","church","ham","screen","bar","spider"],"assassin":["limousine"],"neutral":["racket","shot","tube","princess","park","field","face"]}
+
+
+our clue:
+coma 3
+
+baseline:
+renewal
+
+good eh^
+
+{"blue":["vet","foot","ray","nurse","mine","spot","lab","mint","berry"],"red":["change","beach","school","bond","jet","soldier","whip","wake"],"assassin":["dance"],"neutral":["fork","forest","day","log","bear","maple","horn"]}
+
+
+our clue:
+doctor
+
+baseline:
+diagnosing
+
+
+good^^^
+
+{"blue":["glove","vet","dog","star","maple","duck","death","dress","cotton"],"red":["back","teacher","bell","sock","cast","straw","vacuum","ghost"],"assassin":["space"],"neutral":["pirate","berlin","greece","heart","sub","fork","calf"]}
+
+our clue:
+shroud
+
+baseline:
+dietary_supplements
+
+
+**this one's bad ^^^
+
+
+{"blue":["platypus","green","van","life","club","card","fire","spider"],"red":["duck","whip","foot","pipe","spring","revolution","mouse","bomb","spell"],"assassin":["embassy"],"neutral":["band","cat","undertaker","pan","battery","mercury","pistol"]}
+
+our clue:
+casino
+
+baseline:
+rewards
+
+
+{"blue":["fall","cliff","chick","needle","car","microscope","centaur","part","satellite"],"red":["tick","embassy","washer","racket","moon","figure","parachute","glove"],"assassin":["tie"],"neutral":["knight","fair","cycle","stream","phoenix","model","missile"]}
+
+our clue:
+lab
+
+baseline:
+filmed
+
+{"blue":["hood","octopus","circle","giant","bug","spring","horse","buffalo"],"red":["pitch","wind","scuba diver","tokyo","bond","snowman","worm","revolution","chocolate"],"assassin":["heart"],"neutral":["engine","fish","shot","rabbit","pilot","angel","tail"]}
+
+our clue:
+hoof
+
+baseline:
+elimination
+
+
+board = {"blue":["soul","opera","pin","space","battery","tail","draft","grass"],"red":["compound","beat","dragon","spell","face","day","Tokyo","pan","dance"],"assassin":["kangaroo"],"neutral":["luck","straw","glass","ghost","Saturn","undertaker","marble"]}
+
+our clue:
+astroturf
+
+baseline:
+easements
+
+
