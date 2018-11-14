@@ -12,7 +12,7 @@ parser = argparse.ArgumentParser(description='generate graph based on kNN')
 parser.add_argument('--boardfile', '-o', help='file of boards', default='assets/board_list.json')
 args = parser.parse_args()
 
-model = gensim.models.KeyedVectors.load_word2vec_format('../assets/GoogleNews-vectors-negative300.bin/GoogleNews-vectors-negative300.bin', binary=True, limit=500000)
+model = gensim.models.KeyedVectors.load_word2vec_format('assets/GoogleNews-vectors-negative300.bin/GoogleNews-vectors-negative300.bin', binary=True, limit=500000)
 
 def findNearestWord(corpus,model,vector): 
 	'''
@@ -46,10 +46,12 @@ def convertToTorchDict(bdict):
 	return tsr	
 
 
+def readBoards(fileName = args.boardfile):
+	with open(args.boardfile, 'r') as f:
+		dicts = []
+		for line in f:
+			board = json.loads(line)
+			tensorDict = convertToTorchDict(board) 
+			dicts.append(tensorDict)
+	
 
-with open(args.boardfile, 'r') as f:
-	dicts = []
-	for line in f:
-		board = json.loads(line)
-		tensorDict = convertToTorchDict(board) 
-		dicts.append(tensorDict)
