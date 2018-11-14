@@ -1,5 +1,18 @@
 import scipy as sp 
-from gensim.models import Word2Vec
+import torch
+import numpy as np 
+import gensim
+from gensim.models import Word2Vec 
+from gensim.test.utils import common_texts, get_tmpfile
+import collections
+import argparse
+import json
+
+parser = argparse.ArgumentParser(description='generate graph based on kNN')
+parser.add_argument('--boardfile', '-o', help='file of boards', default='assets/board_list.json')
+args = parser.parse_args()
+
+model = gensim.models.KeyedVectors.load_word2vec_format('../assets/GoogleNews-vectors-negative300.bin/GoogleNews-vectors-negative300.bin', binary=True, limit=500000)
 
 def findNearestWord(corpus,model,vector): 
 	'''
@@ -17,3 +30,26 @@ def findNearestWord(corpus,model,vector):
 	return corpus[minIndex]
 
 
+def convertToTorchDict(bdict):
+	w2v = collections.defaultdict(list)
+	for key in bdict:
+		for word in bdict[key]:
+			curr_word2vec = model.wv[word]
+			w2v[key].append(curr_word2vec)
+	tsr = {}
+	for key in w2v:
+		tsr[key] = torch.Tensor(w2v[key])
+	
+	for key in tsr:
+		print (key)
+		print (tsr[key].shape)
+	return tsr	
+
+
+
+with open(args.boardfile, 'r') as f:
+	dicts = []
+	for line in f:
+		board = json.loads(line)
+		tensorDict = convertToTorchDict(board) 
+		dicts.append(tensorDict)
