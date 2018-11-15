@@ -8,11 +8,11 @@ import collections
 import argparse
 import json
 
-parser = argparse.ArgumentParser(description='generate graph based on kNN')
-parser.add_argument('--boardfile', '-o', help='file of boards', default='assets/board_list.json')
-args = parser.parse_args()
+# parser = argparse.ArgumentParser(description='generate graph based on kNN')
+# parser.add_argument('--boardfile', '-o', help='file of boards', default='assets/board_list.json')
+# args = parser.parse_args()
 
-model = gensim.models.KeyedVectors.load_word2vec_format('assets/GoogleNews-vectors-negative300.bin/GoogleNews-vectors-negative300.bin', binary=True, limit=500000)
+model = gensim.models.KeyedVectors.load_word2vec_format('../assets/GoogleNews-vectors-negative300.bin/GoogleNews-vectors-negative300.bin.gz', binary=True, limit=500000)
 
 def findNearestWord(corpus,model,vector): 
 	'''
@@ -40,18 +40,19 @@ def convertToTorchDict(bdict):
 	for key in w2v:
 		tsr[key] = torch.Tensor(w2v[key])
 	
-	for key in tsr:
-		print (key)
-		print (tsr[key].shape)
+	# for key in tsr:
+	# 	print (key)
+	# 	print (tsr[key].shape)
 	return tsr	
 
 
-def readBoards(fileName = args.boardfile):
-	with open(args.boardfile, 'r') as f:
+def readBoards(fileName = "../assets/board_list.json"):
+	with open(fileName, 'r') as f:
 		dicts = []
 		for line in f:
 			board = json.loads(line)
 			tensorDict = convertToTorchDict(board) 
 			dicts.append(tensorDict)
+	return dicts
 	
 

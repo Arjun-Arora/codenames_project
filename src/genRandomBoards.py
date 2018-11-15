@@ -1,12 +1,14 @@
 import random
 import copy
 import json
+import sys
 # import argparse
 
 # parser = argparse.ArgumentParser(description='generate graph based on kNN')
 # parser.add_argument('--numboards', '-k', help='num boards to generate', type=int, default=5)
 # args = parser.parse_args()
 # nboards = args.numboards
+sys.path.append("../assets")
 
 words = []
 f = open("assets/word_list.txt", "r")
