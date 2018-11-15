@@ -12,7 +12,7 @@ import json
 # parser.add_argument('--boardfile', '-o', help='file of boards', default='assets/board_list.json')
 # args = parser.parse_args()
 
-model = gensim.models.KeyedVectors.load_word2vec_format('../assets/GoogleNews-vectors-negative300.bin/GoogleNews-vectors-negative300.bin.gz', binary=True, limit=500000)
+model = gensim.models.KeyedVectors.load_word2vec_format('../assets/GoogleNews-vectors-negative300.bin/GoogleNews-vectors-negative300.bin', binary=True, limit=500000)
 
 def findNearestWord(corpus,model,vector): 
 	'''
