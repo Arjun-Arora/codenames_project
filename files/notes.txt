@@ -1,0 +1,15 @@
+Underlying assumption has changed. Don't want to remodel the word associations tht word2vec is.
+Instead, choose googlemodel.words[:1000] (top 100 words) to use as one dimension of our neural net:
+When we train, we aren't modifying a word2vec weight anymore, now we are modifying the weight of the 1000
+possible hint words. We are CHOOSING a word rather than CREATING a word.
+
+We can generalize because our baord size is static!!! nice. We always have 9 blue words, so the NN should *should* with enough data train a weight 
+
+Because 400 words, we need 16 boards ~average to see each word once. So for testing generality, prob want to train on at least 32 boards.
+
+Also, 1000 words is a heck a lot to sum over for our loss. --> try to simplify?
+
+
+other tips:
+print prediction @ each layer, see if loss function is reflective of human assocations
+taking the mean over sizeofboards is iffy - better to have another linear layer

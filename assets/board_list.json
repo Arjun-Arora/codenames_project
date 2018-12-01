@@ -1,10 +1,100 @@
-{"blue": ["cover", "bell", "jam", "model", "time", "life", "drop", "spike", "compound"], "red": ["orange", "plate", "fair", "ambulance", "oil", "princess", "play", "hook", "belt", "dance", "row", "trunk", "London", "swing", "plastic"], "assassin": ["bill"]}
-{"blue": ["suit", "ring", "spike", "cliff", "slug", "torch", "mail", "palm", "theater"], "red": ["mass", "lap", "spine", "smuggler", "dice", "star", "center", "whale", "pool", "America", "needle", "cricket", "hand", "press", "organ"], "assassin": ["jam"]}
-{"blue": ["vacuum", "note", "fly", "date", "crown", "heart", "link", "Atlantis", "contract"], "red": ["post", "skyscraper", "degree", "lemon", "mouse", "life", "pool", "star", "park", "lap", "stick", "cricket", "school", "dice", "battery"], "assassin": ["string"]}
-{"blue": ["sound", "dragon", "slug", "sock", "casino", "Loch_Ness", "plane", "Tokyo", "seal"], "red": ["satellite", "mail", "bridge", "capital", "king", "chest", "concert", "deck", "train", "Canada", "battery", "code", "hand", "Bermuda", "poison"], "assassin": ["torch"]}
-{"blue": ["soldier", "turkey", "scorpion", "fall", "China", "seal", "buffalo", "vacuum", "snow"], "red": ["wake", "diamond", "strike", "bolt", "Tokyo", "point", "scientist", "chest", "limousine", "rabbit", "pole", "hood", "drill", "ham", "beach"], "assassin": ["marble"]}
-{"blue": ["gold", "eye", "horseshoe", "millionaire", "alien", "berry", "contract", "vet", "skyscraper"], "red": ["belt", "olive", "bomb", "carrot", "centaur", "wall", "Himalayas", "dwarf", "fly", "spot", "fair", "robot", "key", "ring", "lead"], "assassin": ["suit"]}
-{"blue": ["pyramid", "ice", "arm", "stadium", "microscope", "glove", "pin", "eye", "superhero"], "red": ["Atlantis", "club", "shot", "oil", "Tokyo", "round", "iron", "ivory", "cloak", "string", "heart", "moon", "mug", "block", "hood"], "assassin": ["turkey"]}
-{"blue": ["code", "genius", "shot", "pitch", "mercury", "vet", "cycle", "smuggler", "triangle"], "red": ["ivory", "pupil", "chair", "note", "post", "brush", "ruler", "ketchup", "pass", "march", "stream", "cold", "plastic", "hole", "turkey"], "assassin": ["tower"]}
-{"blue": ["court", "gold", "platypus", "Berlin", "cliff", "shadow", "card", "wave", "turkey"], "red": ["snow", "whale", "chair", "dice", "ghost", "Bermuda", "track", "green", "temple", "piano", "hospital", "boom", "dress", "Shakespeare", "Moscow"], "assassin": ["genius"]}
-{"blue": ["scale", "nut", "bark", "tooth", "hole", "spot", "yard", "cold", "field"], "red": ["conductor", "contract", "shadow", "dinosaur", "lap", "ray", "key", "train", "mine", "tie", "fan", "bottle", "glove", "bow", "tablet"], "assassin": ["watch"]}
+{"blue": ["soul"], "assassin": [], "red": ["center"]}
+{"blue": ["wind"], "assassin": [], "red": ["hood"]}
+{"blue": ["agent"], "assassin": [], "red": ["tick"]}
+{"blue": ["foot"], "assassin": [], "red": ["stadium"]}
+{"blue": ["chick"], "assassin": [], "red": ["chest"]}
+{"blue": ["knife"], "assassin": [], "red": ["wake"]}
+{"blue": ["tag"], "assassin": [], "red": ["knife"]}
+{"blue": ["screen"], "assassin": [], "red": ["pipe"]}
+{"blue": ["shark"], "assassin": [], "red": ["star"]}
+{"blue": ["change"], "assassin": [], "red": ["dragon"]}
+{"blue": ["Beijing"], "assassin": [], "red": ["mole"]}
+{"blue": ["gas"], "assassin": [], "red": ["mine"]}
+{"blue": ["mine"], "assassin": [], "red": ["king"]}
+{"blue": ["straw"], "assassin": [], "red": ["engine"]}
+{"blue": ["Mexico"], "assassin": [], "red": ["embassy"]}
+{"blue": ["row"], "assassin": [], "red": ["snowman"]}
+{"blue": ["Himalayas"], "assassin": [], "red": ["lap"]}
+{"blue": ["train"], "assassin": [], "red": ["temple"]}
+{"blue": ["water"], "assassin": [], "red": ["England"]}
+{"blue": ["berry"], "assassin": [], "red": ["Shakespeare"]}
+{"blue": ["well"], "assassin": [], "red": ["church"]}
+{"blue": ["table"], "assassin": [], "red": ["part"]}
+{"blue": ["rome"], "assassin": [], "red": ["hood"]}
+{"blue": ["air"], "assassin": [], "red": ["Bermuda"]}
+{"blue": ["superhero"], "assassin": [], "red": ["stadium"]}
+{"blue": ["port"], "assassin": [], "red": ["diamond"]}
+{"blue": ["circle"], "assassin": [], "red": ["sub"]}
+{"blue": ["Antarctica"], "assassin": [], "red": ["life"]}
+{"blue": ["arm"], "assassin": [], "red": ["Tokyo"]}
+{"blue": ["cliff"], "assassin": [], "red": ["gold"]}
+{"blue": ["eagle"], "assassin": [], "red": ["cat"]}
+{"blue": ["pilot"], "assassin": [], "red": ["tooth"]}
+{"blue": ["penguin"], "assassin": [], "red": ["Africa"]}
+{"blue": ["dragon"], "assassin": [], "red": ["triangle"]}
+{"blue": ["spot"], "assassin": [], "red": ["water"]}
+{"blue": ["luck"], "assassin": [], "red": ["dwarf"]}
+{"blue": ["boom"], "assassin": [], "red": ["star"]}
+{"blue": ["date"], "assassin": [], "red": ["dog"]}
+{"blue": ["angel"], "assassin": [], "red": ["princess"]}
+{"blue": ["Europe"], "assassin": [], "red": ["knife"]}
+{"blue": ["skyscraper"], "assassin": [], "red": ["yard"]}
+{"blue": ["tap"], "assassin": [], "red": ["club"]}
+{"blue": ["day"], "assassin": [], "red": ["skyscraper"]}
+{"blue": ["air"], "assassin": [], "red": ["theater"]}
+{"blue": ["lemon"], "assassin": [], "red": ["satellite"]}
+{"blue": ["cycle"], "assassin": [], "red": ["horseshoe"]}
+{"blue": ["lab"], "assassin": [], "red": ["degree"]}
+{"blue": ["bolt"], "assassin": [], "red": ["bear"]}
+{"blue": ["draft"], "assassin": [], "red": ["wind"]}
+{"blue": ["knight"], "assassin": [], "red": ["cotton"]}
+{"blue": ["hospital"], "assassin": [], "red": ["calf"]}
+{"blue": ["hole"], "assassin": [], "red": ["ice_cream"]}
+{"blue": ["brush"], "assassin": [], "red": ["shark"]}
+{"blue": ["capital"], "assassin": [], "red": ["swing"]}
+{"blue": ["flute"], "assassin": [], "red": ["arm"]}
+{"blue": ["alps"], "assassin": [], "red": ["cross"]}
+{"blue": ["nut"], "assassin": [], "red": ["plastic"]}
+{"blue": ["whip"], "assassin": [], "red": ["date"]}
+{"blue": ["head"], "assassin": [], "red": ["ice"]}
+{"blue": ["game"], "assassin": [], "red": ["kangaroo"]}
+{"blue": ["tube"], "assassin": [], "red": ["mercury"]}
+{"blue": ["card"], "assassin": [], "red": ["battery"]}
+{"blue": ["dragon"], "assassin": [], "red": ["press"]}
+{"blue": ["lap"], "assassin": [], "red": ["model"]}
+{"blue": ["cat"], "assassin": [], "red": ["web"]}
+{"blue": ["screen"], "assassin": [], "red": ["field"]}
+{"blue": ["India"], "assassin": [], "red": ["dog"]}
+{"blue": ["lock"], "assassin": [], "red": ["model"]}
+{"blue": ["model"], "assassin": [], "red": ["kangaroo"]}
+{"blue": ["post"], "assassin": [], "red": ["ice"]}
+{"blue": ["pumpkin"], "assassin": [], "red": ["hawk"]}
+{"blue": ["mine"], "assassin": [], "red": ["train"]}
+{"blue": ["drill"], "assassin": [], "red": ["plot"]}
+{"blue": ["march"], "assassin": [], "red": ["suit"]}
+{"blue": ["chest"], "assassin": [], "red": ["piano"]}
+{"blue": ["figure"], "assassin": [], "red": ["wake"]}
+{"blue": ["torch"], "assassin": [], "red": ["deck"]}
+{"blue": ["racket"], "assassin": [], "red": ["key"]}
+{"blue": ["dice"], "assassin": [], "red": ["ghost"]}
+{"blue": ["tooth"], "assassin": [], "red": ["bear"]}
+{"blue": ["eye"], "assassin": [], "red": ["pin"]}
+{"blue": ["Moscow"], "assassin": [], "red": ["air"]}
+{"blue": ["Himalayas"], "assassin": [], "red": ["gold"]}
+{"blue": ["nurse"], "assassin": [], "red": ["pupil"]}
+{"blue": ["snow"], "assassin": [], "red": ["bugle"]}
+{"blue": ["fly"], "assassin": [], "red": ["file"]}
+{"blue": ["horse"], "assassin": [], "red": ["moon"]}
+{"blue": ["turkey"], "assassin": [], "red": ["ring"]}
+{"blue": ["kangaroo"], "assassin": [], "red": ["round"]}
+{"blue": ["tick"], "assassin": [], "red": ["orange"]}
+{"blue": ["wake"], "assassin": [], "red": ["London"]}
+{"blue": ["piano"], "assassin": [], "red": ["robot"]}
+{"blue": ["glove"], "assassin": [], "red": ["mass"]}
+{"blue": ["fly"], "assassin": [], "red": ["Washington"]}
+{"blue": ["file"], "assassin": [], "red": ["cell"]}
+{"blue": ["tick"], "assassin": [], "red": ["swing"]}
+{"blue": ["spine"], "assassin": [], "red": ["match"]}
+{"blue": ["hood"], "assassin": [], "red": ["mine"]}
+{"blue": ["square"], "assassin": [], "red": ["queen"]}
+{"blue": ["millionaire"], "assassin": [], "red": ["boom"]}

@@ -15,17 +15,22 @@ f = open("assets/word_list.txt", "r")
 words = [line for line in f.read().split()]
 
 full_list = copy.deepcopy(words)
-nboards = 10
+nboards = 100
 
-blue_len = 9
-red_len = 8
-assassin_len = 1
-neutral_len = 7
+# blue_len = 9
+# red_len = 8
+# assassin_len = 1
+# neutral_len = 7
+blue_len = 1
+red_len = 1
+assassin_len = 0
+neutral_len = 0
+board_len = 2
 
 f2 = open("assets/board_list.json", "w")
 for i in range(nboards):
 	board_dic = {}
-	board = random.sample(words, 25)
+	board = random.sample(words, board_len)
 	board_dic['blue'] = board[ : blue_len]
 	board_dic['red'] = board[blue_len : blue_len+red_len]
 	board_dic['assassin'] = board[blue_len+red_len : blue_len+red_len+assassin_len]

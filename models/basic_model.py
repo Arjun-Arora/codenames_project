@@ -1,6 +1,8 @@
 import scipy as sp
 import torch
 import torch.nn.functional as F
+import copy
+import itertools
 
 class BasicModel(torch.nn.Module):
 	def __init__(self,Data_in,H,Output):
@@ -13,6 +15,7 @@ class BasicModel(torch.nn.Module):
 		outputVector = self.linear2(h_relu)
 		outputVector = outputVector.mean(dim=1)
 		return outputVector
+
 def BasicLoss(outputVector,boardDict,assassinWeight=2.0): #boardDict is word2vec Tensor version of board with labels 
 	sumLoss = 0 
 	for key in boardDict:
@@ -37,3 +40,13 @@ def BasicLoss(outputVector,boardDict,assassinWeight=2.0): #boardDict is word2vec
 		sumLoss += currLoss
 	return sumLoss
 
+def KWordLoss(outputVector,boardDict,assassinWeight=2.0, k=1):
+	minLoss = float('Inf')
+	kBoardDict = copy.deepcopy(boardDict)
+	for combo in itertools.combinations(boardDict['blue'], k):
+		
+		kBoardDict['blue'] = combo
+		# print (combo)
+		loss = BasicLoss(outputVector,kBoardDict,assassinWeight)
+		minLoss = min(loss, minLoss)
+	return minLoss

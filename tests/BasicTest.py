@@ -22,7 +22,9 @@ def BasicTest():
 	H = 1000
 
 	model = basic_model.BasicModel(D_out,H,D_out)
-	criterion = basic_model.BasicLoss
+	# criterion = basic_model.BasicLoss
+	criterion = basic_model.KWordLoss
+
 	optimizer = torch.optim.SGD(model.parameters(), lr=1e-4)
 	for t in range(100):#epochs
 		output_vectors = model(TensorInput)
@@ -35,7 +37,7 @@ def BasicTest():
 			# print("output_vector shape before input:{}".format(output_vector.shape))
 			loss += criterion(output_vector,ListOfBoardDicts[i])
 		#print out loss
-		# print(t, loss.item())
+		print(t, loss.item())
 
 		optimizer.zero_grad()
 		loss.backward()
@@ -46,18 +48,25 @@ def BasicTest():
 def Inference(board):
 
 	Input = torch.cat(list(board.values())).unsqueeze(dim=0)
-	googlemodel = gensim.models.KeyedVectors.load_word2vec_format('../assets/GoogleNews-vectors-negative300.bin/GoogleNews-vectors-negative300.bin', binary=True, limit=500000)
-
+	googlemodel = gensim.models.KeyedVectors.load_word2vec_format('../assets/GoogleNews-vectors-negative300.bin/GoogleNews-vectors-negative300.bin', binary=True, limit=10000)
+	print (googlemodel.index2word[-50:])
 	model = torch.load(model_path)
 	# torch.zero_grad()
 	model = model.eval()
 
 	output = model(Input)
+
 	# print (googlemodel.wv.vocab)
 	clue = utils.findNearestWord(list(googlemodel.wv.vocab.keys()), googlemodel, output.data.numpy())
-	print(board)
+	# print(board)
 	print (clue)
+	criterion = basic_model.BasicLoss
+	print (criterion(output, board)) #also, output isn't the same as clue - clue is the nearest word
+	print (criterion(torch.Tensor(googlemodel.wv[clue]), board))
 
-BasicTest()
+
+BasicTest() 
 ListOfBoardDicts = utils.readBoards()
-Inference(ListOfBoardDicts[4])
+for b in ListOfBoardDicts:
+	print (Inference(b))
+	break
