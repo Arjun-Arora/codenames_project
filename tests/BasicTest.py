@@ -6,6 +6,7 @@ from basic_model import BasicModel,BasicLoss
 import torch
 import gensim
 from tqdm import tqdm
+import torch.nn.functional as F
 
 model_path = "basicmodel.pt"
 
@@ -47,10 +48,13 @@ def TrainBasicModel(epochs=100,batch_size=32,save_path=None):
 	criterion = BasicLoss
 	# criterion = basic_model.KWordLoss
 
-	optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
+	optimizer = torch.optim.Adam(model.parameters(), lr=1e-4,weight_decay=1e0)
 	for t in range(1,epochs+1):#epochs
 		avg_loss = 0
-		for i in tqdm(range(int(len(TensorInput)/batch_size))):
+		optimizer.zero_grad()
+		num_iters = int(len(TensorInput)/batch_size)
+
+		for i in tqdm(range(num_iters)):
 			output_vectors = model(TensorInput[i:i+batch_size,:])
 			loss = 0
 			# print("output_vectors shape: {}".format(output_vectors.shape))
@@ -59,13 +63,12 @@ def TrainBasicModel(epochs=100,batch_size=32,save_path=None):
 				output_vector = output_vectors[i,:]
 				# print("output_vector shape before input:{}".format(output_vector.shape))
 				loss += criterion(output_vector,ListOfBoardDicts[i])
-				avg_loss += loss.item()
+			avg_loss += loss.item()/output_vectors.shape[0]
 				# print("loss per iter: {}".format(loss.item()))
 			#print out loss
-			optimizer.zero_grad()
 			loss.backward()
 			optimizer.step()
-		print("avg loss for epoch {}: {}".format(t, avg_loss/int(len(TensorInput)/batch_size)))
+		print("avg loss for epoch {}: {}".format(t, avg_loss/num_iters))
 	torch.save(model, model_path)
 
 def Inference(board):
@@ -74,30 +77,32 @@ def Inference(board):
 	googlemodel = gensim.models.KeyedVectors.load_word2vec_format('./assets/GoogleNews-vectors-negative300.bin/GoogleNews-vectors-negative300.bin', binary=True, limit=10000)
 	# print (googlemodel.index2word[-50:])
 	model = torch.load(model_path)
-	# torch.zero_grad()
-	model = model.eval()
-	# print("input.shape: {}".format(Input.shape))
-	Input = Input.view(numBoards,-1)
-	output = model(Input)
-	# print(output.shape)
+	with torch.no_grad():
+		model = model.eval()
+		# print("input.shape: {}".format(Input.shape))
+		Input = Input.view(numBoards,-1)
+		output = model(Input)
+		# print (googlemodel.wv.vocab)
+		clue = utils.findNearestWord(list(googlemodel.wv.vocab.keys()), googlemodel, output.squeeze(dim=0).data.numpy())
 
-	# print (googlemodel.wv.vocab)
-	clue = utils.findNearestWord(list(googlemodel.wv.vocab.keys()), googlemodel, output.squeeze(dim=0).data.numpy())
-	# print(board)
-	# print ("clue: {}".format(clue))
-	criterion = BasicLoss
-	# print (criterion(output, board)) #also, output isn't the same as clue - clue is the nearest word
-	# print (criterion(torch.Tensor(googlemodel.wv[clue]), board))
-	return clue
+		# print("shape of output:{} shape of clue: {} ".format(output.shape,googlemodel.wv[clue].shape))
+		print("cosine similarity of output and clue: {}".format(F.cosine_similarity(output.squeeze(dim=0),torch.FloatTensor(googlemodel.wv[clue]),dim=0)))
+		# print(output)
+		# tabledata = list[output.data.numpy().tolist()]
+		# print(board)
+		# print ("clue: {}".format(clue))
+		criterion = BasicLoss
+		# print (criterion(output, board)) #also, output isn't the same as clue - clue is the nearest word
+		# print (criterion(torch.Tensor(googlemodel.wv[clue]), board))
+		return clue
 
 
-TrainBasicModel(epochs=1)
+TrainBasicModel(epochs=30)
 ListOfBoardDicts = utils.readBoards("./assets/dev_board_list.json")
 ListOfBoardDictsWords = utils.readWordBoards("./assets/dev_board_list.json")
-for i in range(len(ListOfBoardDicts)):
+for i in range(len(ListOfBoardDicts[:5])):
 	b = ListOfBoardDicts[i]
 	b_words = ListOfBoardDictsWords[i]
 	print ("clue: {}".format(Inference(b)))
 	print ("board: {}".format(b_words))
 	# print ("board: {}".format(b))
-	break

@@ -5,7 +5,7 @@ import copy
 import itertools
 
 class BasicModel(torch.nn.Module):
-	def __init__(self,board_sz, w2v_sz, n=4,h=200):
+	def __init__(self,board_sz, w2v_sz, n=1,h=300):
 		super(BasicModel,self).__init__()
 		self.module_list = []
 		activation = torch.nn.modules.activation.ReLU()
@@ -33,7 +33,7 @@ def BasicLoss(outputVector,boardDict,assassinWeight=2.0,redWeight=0.1): #boardDi
 				#print("word2vecShape: {},outputVectorShape:{}".format(word2vec.shape,outputVector.shape))
 				#for every individual word2vec vector, sum cosine similarity
 				currLoss += F.cosine_similarity(word2vec,outputVector,dim=0) #cosine dist = 1-cosine_similarity
-			currLoss = -(torch.mean(currLoss))
+			currLoss = -(currLoss)/len(blueTensor)
 			# print(currLoss)
 		# elif(key == 'red'): #move away from red word
 		# 	redTensor = boardDict[key]
@@ -52,7 +52,6 @@ def KWordLoss(outputVector,boardDict,assassinWeight=2.0, k=1):
 	minLoss = float('Inf')
 	kBoardDict = copy.deepcopy(boardDict)
 	for combo in itertools.combinations(boardDict['blue'], k):
-		
 		kBoardDict['blue'] = combo
 		# print (combo)
 		loss = BasicLoss(outputVector,kBoardDict,assassinWeight)
