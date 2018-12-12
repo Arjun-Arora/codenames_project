@@ -23,7 +23,7 @@ def load_glove_model(glove_file="assets/glove.6B.50d.txt"):
 
 
 def get_boards():
-    file = "assets/board_list.json"
+    file = "assets/dev_board_list.json"
     with open(file, 'r') as f:
         dicts = []
         for line in f:
