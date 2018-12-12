@@ -1,4 +1,4 @@
-
+assets
 assets/word2vec.model.vectors.npy
 assets/GoogleNews-vectors-negative300.bin.gz
 *.gz
