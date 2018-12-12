@@ -31,7 +31,7 @@ def get_boards():
             dicts.append(board)
     return dicts
 
-def find_nearest_word(corpus, vector): 
+def find_nearest_word(corpus, vector, words_to_avoid): 
 	'''
 	find nearest word function: 
 	inputs:
@@ -43,7 +43,7 @@ def find_nearest_word(corpus, vector):
 	'''
 	# vec_corpus = sp.asarray([corpus[word] for word in corpus])
 
-	min_idx = sp.argmin([sp.spatial.distance.cosine(corpus[word],vector) for word in corpus]) #minimize across words not across vector length
+	min_idx = sp.argmin([sp.spatial.distance.cosine(corpus[word],vector) for word in corpus]) # if word not in words_to_avoid #minimize across words not across vector length
 	min_word = corpus.keys()[min_idx]
 	return min_word
 

@@ -15,7 +15,7 @@ def basicLoss(blue_list, red_list=None, assassin_list=None):
     return dist
 
 def basicCentroid(word_vecs):
-    return np.sum(word_vecs)/len(word_vecs)
+    return np.sum(word_vecs, axis=0)/len(word_vecs)
 
 def codenamesCluster(codenamesBoard,embedding,centroid_fn,loss_fn,b=2,r=0,a=0):
     """
@@ -40,6 +40,9 @@ def codenamesCluster(codenamesBoard,embedding,centroid_fn,loss_fn,b=2,r=0,a=0):
         if curr_loss < minLoss:
             minLoss=curr_loss
             bestClue = centroid_fn(blueCombinations)
+            # print blueCombinations
+            # print bestClue
+
 
     end = time.time()
     print("Clustering took: {:.2f} seconds".format(start-end))
