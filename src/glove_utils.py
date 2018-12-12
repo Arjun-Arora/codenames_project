@@ -8,7 +8,7 @@ import numpy as np
 import scipy as sp
 
 def load_glove_model(glove_file="assets/glove.6B.50d.txt"):
-    print "Loading Glove Model"
+    # print "Loading Glove Model"
     f = open(glove_file,'r')
     model = {}
     w =  open("assets/word_list.txt", 'r')
@@ -18,7 +18,7 @@ def load_glove_model(glove_file="assets/glove.6B.50d.txt"):
 
         embedding = np.array([float(val) for val in splitLine[1:]])
         model[word] = embedding
-    print "Done.",len(model)," words loaded!"
+    # print "Done.",len(model)," words loaded!"
     return model
 
 
@@ -41,13 +41,22 @@ def find_nearest_word(corpus, vector, words_to_avoid):
 
 	Output: String word that is nearest to word2vecVector from corpus (cosine distance)
 	'''
-	# vec_corpus = sp.asarray([corpus[word] for word in corpus])
+	words_to_avoid = [str(word) for word in words_to_avoid]
+	# print corpus.keys()[:10]
+	min_word = ""
+	min_dist = float('Inf')
+	for word in corpus:
+		if word not in words_to_avoid:
+			curr_dist = sp.spatial.distance.cosine(corpus[word], vector)
+			if curr_dist < min_dist:
+				min_word = word
+				min_dist = curr_dist
 
-	min_idx = sp.argmin([sp.spatial.distance.cosine(corpus[word],vector) for word in corpus]) # if word not in words_to_avoid #minimize across words not across vector length
-	min_word = corpus.keys()[min_idx]
+	# min_idx = sp.argmin([sp.spatial.distance.cosine(corpus[word],vector) for word in corpus if word not in words_to_avoid]) #minimize across words not across vector length
+	# min_word = corpus.keys()[min_idx]
 	return min_word
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
 	# with open("assets/word_list.txt", 'r') as fin:
 	# 	with open("assets/glove_list.txt", "w+") as fout:
 	# 		old_words = fin.read().split()
@@ -55,9 +64,9 @@ if __name__ == "__main__":
 	# 			neww = w.replace("_", "")
 	# 			neww = neww.lower()
 	# 			fout.write(neww + "\n")
-	model = load_glove_model()
-	with open("assets/glove_list.txt", 'r') as f:
-		words = f.read().split()
-		for word in words:
-			if word not in model:
-				print word
+	# model = load_glove_model()
+	# with open("assets/glove_list.txt", 'r') as f:
+	# 	words = f.read().split()
+	# 	for word in words:
+	# 		if word not in model:
+	# 			print (word)

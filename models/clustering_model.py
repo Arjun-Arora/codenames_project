@@ -33,17 +33,19 @@ def codenamesCluster(codenamesBoard,embedding,centroid_fn,loss_fn,b=2,r=0,a=0):
     minLoss = float('Inf')
     bestClue = None
 
-    for blueCombinations in itertools.combinations(embeddingBoard['blue'], b):
+    bestCombo = None
+    for blue_idxs in itertools.combinations(range(len(embeddingBoard['blue'])), b):
+        blueCombinations = [embeddingBoard['blue'][idx] for idx in blue_idxs]
+    # for blueCombinations in itertools.combinations(embeddingBoard['blue'], b):
         # for redCombinations in itertools.combinations(embeddingBoard['red'],r):
             # for assassinCombinations in itertools.combinations(embeddingBoard['assassin'],a):
         curr_loss = loss_fn(blueCombinations) #,redCombinations,assassinCombinations)
         if curr_loss < minLoss:
             minLoss=curr_loss
             bestClue = centroid_fn(blueCombinations)
-            # print blueCombinations
-            # print bestClue
+            bestCombo = blue_idxs
 
-
+    print ([codenamesBoard['blue'][idx] for idx in bestCombo])
     end = time.time()
     print("Clustering took: {:.2f} seconds".format(start-end))
     return minLoss,bestClue
