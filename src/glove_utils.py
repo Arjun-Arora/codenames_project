@@ -4,6 +4,7 @@
 #takes in embedding, outputs word (nearest neighbor)
 
 import json
+import time
 import numpy as np
 import scipy as sp
 
@@ -12,10 +13,12 @@ def load_glove_model(glove_file="assets/glove.6B.50d.txt"):
     f = open(glove_file,'r')
     model = {}
     w =  open("assets/word_list.txt", 'r')
-    for line in f:
+    ignore_n = 50
+    for idx, line in enumerate(f):
+    	if idx < ignore_n:
+    		continue
         splitLine = line.split()
         word = splitLine[0]
-
         embedding = np.array([float(val) for val in splitLine[1:]])
         model[word] = embedding
     # print "Done.",len(model)," words loaded!"
@@ -41,6 +44,7 @@ def find_nearest_word(corpus, vector, words_to_avoid):
 
 	Output: String word that is nearest to word2vecVector from corpus (cosine distance)
 	'''
+	start = time.time()
 	words_to_avoid = [str(word) for word in words_to_avoid]
 	# print corpus.keys()[:10]
 	min_word = ""
@@ -51,7 +55,8 @@ def find_nearest_word(corpus, vector, words_to_avoid):
 			if curr_dist < min_dist:
 				min_word = word
 				min_dist = curr_dist
-
+	end = time.time()
+	print("Search took: {:.2f} seconds".format(end-start))
 	# min_idx = sp.argmin([sp.spatial.distance.cosine(corpus[word],vector) for word in corpus if word not in words_to_avoid]) #minimize across words not across vector length
 	# min_word = corpus.keys()[min_idx]
 	return min_word
