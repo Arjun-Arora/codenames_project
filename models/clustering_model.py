@@ -35,7 +35,6 @@ def codenamesCluster(codenamesBoard,embedding,centroid_fn,loss_fn,b=2,r=0,a=0):
     :param loss_fn: takes in 3 lists corresponding to combinations of blue, red, and assassin words vectors
     :return: best cluster center average
     """
-    print "new!"
     
     embeddingBoard = defaultdict(list)
     for i, (team,wordList) in enumerate(codenamesBoard.items()):

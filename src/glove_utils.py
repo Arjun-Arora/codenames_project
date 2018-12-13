@@ -8,31 +8,31 @@ import time
 import numpy as np
 import scipy as sp
 
-def load_glove_model(glove_file="assets/glove.6B.50d.txt"):
-    # print "Loading Glove Model"
-    f = open(glove_file,'r')
-    model = {}
-    w =  open("assets/word_list.txt", 'r')
-    ignore_n = 50
-    for idx, line in enumerate(f):
-    	if idx < ignore_n:
-    		continue
-        splitLine = line.split()
-        word = splitLine[0]
-        embedding = np.array([float(val) for val in splitLine[1:]])
-        model[word] = embedding
-    # print "Done.",len(model)," words loaded!"
-    return model
+def load_glove_model(glove_file="assets/glove.6B.50d.txt", word_list_file="assets/word_list.txt"):
+	# print "Loading Glove Model"
+	f = open(glove_file,'r', encoding='utf8')
+	model = {}
+	w =  open(word_list_file, 'r')
+	ignore_n = 50
+	for idx, line in enumerate(f):
+		if idx < ignore_n:
+			continue
+		splitLine = line.split()
+		word = splitLine[0]
+		embedding = np.array([float(val) for val in splitLine[1:]])
+		model[word] = embedding
+	# print "Done.",len(model)," words loaded!"
+	return model
 
 
-def get_boards():
-    file = "assets/dev_board_list.json"
-    with open(file, 'r') as f:
-        dicts = []
-        for line in f:
-            board = json.loads(line)
-            dicts.append(board)
-    return dicts
+def get_boards(glove_file="assets/dev_board_list.json"):
+	file = glove_file
+	with open(file, 'r') as f:
+		dicts = []
+		for line in f:
+			board = json.loads(line)
+			dicts.append(board)
+	return dicts
 
 def find_nearest_word(corpus, vector, words_to_avoid): 
 	'''
