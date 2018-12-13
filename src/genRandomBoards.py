@@ -48,7 +48,7 @@ for i in range(nboards):
 	board_dic['blue'] = board[ : blue_len]
 	board_dic['red'] = board[blue_len : blue_len+red_len]
 	board_dic['assassin'] = board[blue_len+red_len : blue_len+red_len+assassin_len]
-	board_dic['red'] += board[blue_len+red_len+assassin_len:blue_len+red_len+assassin_len + neutral_len] #for now, make the neutrals = red for simplicity
+	board_dic['neutral'] = board[blue_len+red_len+assassin_len:blue_len+red_len+assassin_len + neutral_len] #for now, make the neutrals = red for simplicity
 
 
 	json.dump(board_dic, f2)
