@@ -1,6 +1,6 @@
 import sys
 sys.path.append("models")
-from clustering_model import codenamesCluster, basicLoss, basicCentroid
+from clustering_model import codenamesCluster, basicLoss, basicCentroid, inBetweenVector
 sys.path.append("src")
 import glove_utils as glove 
 

@@ -5,11 +5,25 @@ import itertools
 from collections import defaultdict
 import numpy as np
 
+# def inBetweenVector(x,y):
+#     theta = sp.arccos(x.dot(y)/(sp.linalg.norm(x)*sp.linalg.norm(y)))
+#     angle = theta/2.0
+# #     print(angle)
+#     N = x.shape[0]
+#     rotation_matrix = sp.diag(sp.ones(N))
+#     # print(rotation_matrix)
+#     rotation_matrix[0,0] = sp.cos(angle)
+#     rotation_matrix[1,1] = sp.cos(angle)
+#     rotation_matrix[0,1] = -sp.sin(angle)
+#     rotation_matrix[1,0] = sp.sin(angle)
+#     return rotation_matrix.dot(x)
 
-def basicLoss(blue_list, red_list=None, assassin_list=None):
+
+def basicLoss(blue_list, red_list=None, assassin=None):
     dist = 0
     blue_norm = len(blue_list)
     red_norm = len(red_list)
+    # assassin_weight = 
     for blue_pair in itertools.combinations(blue_list, 2): #for every pair of words in this list
         #dist +=  spatial.distance.cosine(blue_pair[0], blue_pair[1]) / blue_norm
         curr_dist = spatial.distance.cosine(blue_pair[0], blue_pair[1]) / blue_norm
