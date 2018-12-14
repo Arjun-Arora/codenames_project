@@ -1,0 +1,6 @@
+[submodule "codenames_blog"]
+	path = codenames_blog
+	url = https://github.com/docmarionum1/codenames_blog.git
+[submodule "baseline/codenames_blog"]
+	path = baseline/codenames_blog
+	url = https://github.com/docmarionum1/codenames_blog.git

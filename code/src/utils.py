@@ -39,7 +39,10 @@ def convertToTorchDict(bdict):
 	tsr = {}
 	for key in w2v:
 		tsr[key] = torch.Tensor(w2v[key])
-
+	
+	# for key in tsr:
+	# 	print (key)
+	# 	print (tsr[key].shape)
 	return tsr
 
 def readWordBoards(fileName="./assets/gensim_dev_board_list.json"):

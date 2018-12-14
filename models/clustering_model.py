@@ -35,7 +35,6 @@ def codenamesCluster(codenamesBoard,embedding,centroid_fn,loss_fn,b=2,r=0,a=0):
     :param loss_fn: takes in 3 lists corresponding to combinations of blue, red, and assassin words vectors
     :return: best cluster center average
     """
-    print "new!"
     
     embeddingBoard = defaultdict(list)
     for i, (team,wordList) in enumerate(codenamesBoard.items()):
@@ -54,8 +53,12 @@ def codenamesCluster(codenamesBoard,embedding,centroid_fn,loss_fn,b=2,r=0,a=0):
             bestCombo = blue_idxs
 
     print ([codenamesBoard['blue'][idx] for idx in bestCombo]) #the k-combo of words the clue is associated with
+# =======
+#     match = [codenamesBoard['blue'][idx] for idx in bestCombo]
+#     # print ([codenamesBoard['blue'][idx] for idx in bestCombo])
+# >>>>>>> b6267d379754e53e566850769d4bf1b2c2134a05
     
-    return minLoss,bestClue
+    return minLoss,bestClue#, match
 
 
 
