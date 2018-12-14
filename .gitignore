@@ -8,3 +8,16 @@ assets/GoogleNews-vectors-negative300.bin/.DS_Store
 assets/.DS_Store
 .DS_Store
 assets/.glove.6B.50d.txt
+models/__pycache__/basic_model.cpython-36.pyc
+.idea/codenames_project.iml
+.idea/encodings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/workspace.xml
+assets/board_list.json
+.idea/vcs.xml
+*.json
+*.pyc
+assets/board_list.json
+*.json
+models/__pycache__/basic_model.cpython-36.pyc

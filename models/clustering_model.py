@@ -54,9 +54,10 @@ def codenamesCluster(codenamesBoard,embedding,centroid_fn,loss_fn,b=2,r=0,a=0):
             bestClue = centroid_fn(blueCombinations)
             bestCombo = blue_idxs
 
-    print ([codenamesBoard['blue'][idx] for idx in bestCombo])
+    match = [codenamesBoard['blue'][idx] for idx in bestCombo]
+    # print ([codenamesBoard['blue'][idx] for idx in bestCombo])
     
-    return minLoss,bestClue
+    return minLoss,bestClue,match
 
 
 
