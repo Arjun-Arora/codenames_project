@@ -12,7 +12,7 @@ import json
 # parser.add_argument('--boardfile', '-o', help='file of boards', default='assets/board_list.json')
 # args = parser.parse_args()
 
-model = gensim.models.KeyedVectors.load_word2vec_format('./assets/GoogleNews-vectors-negative300.bin/GoogleNews-vectors-negative300.bin', binary=True, limit=500000)
+model = gensim.models.KeyedVectors.load_word2vec_format('./assets/GoogleNews-vectors-negative300.bin', binary=True, limit=500000)
 
 def findNearestWord(corpus,model,vector): 
 	'''
@@ -45,7 +45,7 @@ def convertToTorchDict(bdict):
 	# 	print (tsr[key].shape)
 	return tsr
 
-def readWordBoards(fileName="./assets/board_list.json"):
+def readWordBoards(fileName="./assets/gensim_dev_board_list.json"):
 	with open(fileName,'r') as f:
 		dicts = []
 		for line in f:
@@ -55,7 +55,7 @@ def readWordBoards(fileName="./assets/board_list.json"):
 #
 
 
-def readBoards(fileName = "./assets/board_list.json"):
+def readBoards(fileName = "./assets/gensim_board_list.json"):
 	with open(fileName, 'r') as f:
 		dicts = []
 		for line in f:

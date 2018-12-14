@@ -35,15 +35,15 @@ def BasicLoss(outputVector,boardDict,assassinWeight=2.0,redWeight=0.1): #boardDi
 				currLoss += F.cosine_similarity(word2vec,outputVector,dim=0) #cosine dist = 1-cosine_similarity
 			currLoss = -(currLoss)/len(blueTensor)
 			# print(currLoss)
-		# elif(key == 'red'): #move away from red word
-		# 	redTensor = boardDict[key]
-		# 	for word2vec in redTensor:
-		# 	 	#for every individual word2vec vector, sum cosine similarity
-		# 	 	currLoss += F.cosine_similarity(word2vec,outputVector,dim=0) #cosine dist = 1-cosine_similarity
-		# 	currLoss = redWeight*(torch.mean(currLoss))
-		# elif(key =='assassin'): #want to move away from assassin word
-		# 	assassinVector = boardDict[key] #should be 1,len(word2Vec)
-		# 	currLoss = (torch.mean(assassinWeight*(F.cosine_similarity(assassinVector,outputVector,dim=0))))
+		elif(key == 'red'): #move away from red word
+			redTensor = boardDict[key]
+			for word2vec in redTensor:
+			 	#for every individual word2vec vector, sum cosine similarity
+			 	currLoss += F.cosine_similarity(word2vec,outputVector,dim=0) #cosine dist = 1-cosine_similarity
+			currLoss = redWeight*(torch.mean(currLoss))
+		elif(key =='assassin'): #want to move away from assassin word
+			assassinVector = boardDict[key] #should be 1,len(word2Vec)
+			currLoss = (torch.mean(assassinWeight*(F.cosine_similarity(assassinVector,outputVector,dim=0))))
 		# print(currLoss.shape)
 		sumLoss += currLoss
 	return sumLoss

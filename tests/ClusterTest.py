@@ -1,6 +1,6 @@
 import sys
 sys.path.append("models")
-from clustering_model import codenamesCluster, basicLoss, basicCentroid, inBetweenVector
+from clustering_model import codenamesCluster, basicLoss, basicCentroid
 sys.path.append("src")
 import glove_utils as glove 
 
@@ -10,7 +10,7 @@ embeddings = glove.load_glove_model()
 
 boards = glove.get_boards()
 
-for board in boards:
+for board in boards[:20]:
 	print (board)
 	board_words = []
 	for key in board:

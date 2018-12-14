@@ -5,35 +5,21 @@ import itertools
 from collections import defaultdict
 import numpy as np
 
-# def inBetweenVector(x,y):
-#     theta = sp.arccos(x.dot(y)/(sp.linalg.norm(x)*sp.linalg.norm(y)))
-#     angle = theta/2.0
-# #     print(angle)
-#     N = x.shape[0]
-#     rotation_matrix = sp.diag(sp.ones(N))
-#     # print(rotation_matrix)
-#     rotation_matrix[0,0] = sp.cos(angle)
-#     rotation_matrix[1,1] = sp.cos(angle)
-#     rotation_matrix[0,1] = -sp.sin(angle)
-#     rotation_matrix[1,0] = sp.sin(angle)
-#     return rotation_matrix.dot(x)
-
 
 def basicLoss(blue_list, red_list=None, assassin=None):
     dist = 0
     blue_norm = len(blue_list)
-    red_norm = len(red_list)
-    # assassin_weight = 
+    red_norm = len(red_list) 
     for blue_pair in itertools.combinations(blue_list, 2): #for every pair of words in this list
-        #dist +=  spatial.distance.cosine(blue_pair[0], blue_pair[1]) / blue_norm
         curr_dist = spatial.distance.cosine(blue_pair[0], blue_pair[1]) / blue_norm
         for red_word in red_list:
 
             red_blue0 = spatial.distance.cosine(red_word, blue_pair[0])
             red_blue1 = spatial.distance.cosine(red_word, blue_pair[1])
             curr_dist -= (red_blue0 + red_blue1) / 2 / red_norm
-            # if min(red_blue, red_blue1) <= 1.5 * curr_dist:
-            #     curr_dist *= 2
+
+        # if assassin != None:
+            curr_dist -= (spatial.distance.cosine(assassin, blue_pair[0]) + spatial.distance.cosine(assassin, blue_pair[1])) / red_norm * 2
         dist += curr_dist
 
     return dist
@@ -61,15 +47,13 @@ def codenamesCluster(codenamesBoard,embedding,centroid_fn,loss_fn,b=2,r=0,a=0):
     bestCombo = None
     for blue_idxs in itertools.combinations(range(len(embeddingBoard['blue'])), b):
         blueCombinations = [embeddingBoard['blue'][idx] for idx in blue_idxs]
-    # for blueCombinations in itertools.combinations(embeddingBoard['blue'], b):
-        # for redCombinations in itertools.combinations(embeddingBoard['red'],r):
-        curr_loss = loss_fn(blueCombinations, embeddingBoard['red']) #,redCombinations,assassinCombinations)
+        curr_loss = loss_fn(blueCombinations, embeddingBoard['red'], embeddingBoard['assassin'][0])
         if curr_loss < minLoss:
             minLoss=curr_loss
             bestClue = centroid_fn(blueCombinations)
             bestCombo = blue_idxs
 
-    print ([codenamesBoard['blue'][idx] for idx in bestCombo])
+    print ([codenamesBoard['blue'][idx] for idx in bestCombo]) #the k-combo of words the clue is associated with
     
     return minLoss,bestClue
 

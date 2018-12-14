@@ -12,7 +12,7 @@ def load_glove_model(glove_file="assets/glove.6B.50d.txt"):
     # print "Loading Glove Model"
     f = open(glove_file,'r')
     model = {}
-    w =  open("assets/word_list.txt", 'r')
+    w =  open("assets/glove_list.txt", 'r')
     ignore_n = 50
     for idx, line in enumerate(f):
     	if idx < ignore_n:
@@ -57,11 +57,11 @@ def find_nearest_word(corpus, vector, words_to_avoid):
 				min_dist = curr_dist
 	end = time.time()
 	print("Search took: {:.2f} seconds".format(end-start))
-	# min_idx = sp.argmin([sp.spatial.distance.cosine(corpus[word],vector) for word in corpus if word not in words_to_avoid]) #minimize across words not across vector length
-	# min_word = corpus.keys()[min_idx]
+
 	return min_word
 
 # if __name__ == "__main__":
+	# string manipulations to make game wordlist work with glove (lowercase, no spaces)
 	# with open("assets/word_list.txt", 'r') as fin:
 	# 	with open("assets/glove_list.txt", "w+") as fout:
 	# 		old_words = fin.read().split()
@@ -69,9 +69,5 @@ def find_nearest_word(corpus, vector, words_to_avoid):
 	# 			neww = w.replace("_", "")
 	# 			neww = neww.lower()
 	# 			fout.write(neww + "\n")
-	# model = load_glove_model()
-	# with open("assets/glove_list.txt", 'r') as f:
-	# 	words = f.read().split()
-	# 	for word in words:
-	# 		if word not in model:
-	# 			print (word)
+
+
